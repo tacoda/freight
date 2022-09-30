@@ -3,11 +3,12 @@ use serde_derive::{Serialize, Deserialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct FreightConfig {
+    port: u16,
     dir: String,
 }
 
 impl ::std::default::Default for FreightConfig {
-    fn default() -> Self { Self { dir: "tests/support".into() } }
+    fn default() -> Self { Self { port: 3030, dir: "".into() } }
 }
 
 #[tokio::main]
@@ -20,7 +21,9 @@ async fn main() {
     println!("The configuration is:");
     println!("{:#?}", cfg);
 
+    println!("Serving '{}' on http://localhost:{}/", cfg.dir, cfg.port);
+
     warp::serve(warp::fs::dir(cfg.dir))
-        .run(([127, 0, 0, 1], 3030))
+        .run(([127, 0, 0, 1], cfg.port))
         .await;
 }

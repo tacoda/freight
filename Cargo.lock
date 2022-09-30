@@ -183,7 +183,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "freight"
+name = "freight-train"
 version = "0.1.0"
 dependencies = [
  "confy",
