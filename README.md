@@ -1,4 +1,4 @@
 # 🚚 Freight
 
-> A configurable, full-featured server
+> A configurable, fully-featured web server
 
